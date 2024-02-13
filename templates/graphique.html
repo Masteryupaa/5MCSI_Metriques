@@ -22,10 +22,12 @@
 
 
     <script>
-      google.charts.load('current', { packages: ['corechart'] });
-      google.charts.setOnLoadCallback(drawBackgroundColor);
+      google.charts.load('current', {packages: ['corechart', 'bar']});
+      //google.charts.setOnLoadCallback(drawBackgroundColor);
+      google.charts.setOnLoadCallback(drawTopX);
      function drawBackgroundColor() {
-    function drawChart(data) {
+
+    function drawTopX(data) {
     // Convertir les données récupérées en un tableau utilisable par Google Charts
 
     var dataTable = new google.visualization.DataTable();
@@ -40,7 +42,7 @@
     var options = {
       chart: {
           title: 'Évolution des températures de Paris pour les 16 prochains jours',
-          subtitle: 'Based on a scale of 1 to 10'
+          subtitle: 'En degrée C°'
         },
         axes: {
           x: {

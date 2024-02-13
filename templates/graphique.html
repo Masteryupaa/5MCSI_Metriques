@@ -6,6 +6,16 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/mainpage.css') }}">
   </head>
   <body>
+
+    <nav class="navbar">
+      <ul>
+          <li><a href="mathisesiee-it.alwaysdata.net/contact/">Liste de contacts</a></li>
+          <li><a href="mathisesiee-it.alwaysdata.net/rapport/">Rapport - Evolution des températures</a></li>
+          <li><a href="mathisesiee-it.alwaysdata.net/tawarano/">Export - Relévés météorologique Tawarano</a></li>
+      </ul>
+    </nav>
+
+
     <div id="chart_div"></div>
     <script>
       google.charts.load('current', { packages: ['corechart'] });

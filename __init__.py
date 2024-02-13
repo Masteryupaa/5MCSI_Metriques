@@ -13,7 +13,7 @@ def hello_world():
 
 @app.route("/contact/")
 def MaPremiereAPI():
-    return "<h2>Ma page de contact</h2>"
+    return "<h2>Ma page de contact</h2> <nav class="navbar"><ul><li><a href="contact/">Liste de contacts</a></li><li><a href="rapport/">Rapport - Evolution des températures</a></li><li><a href="tawarano/">Export - Relévés météorologique Tawarano</a></li></ul></nav>"
 
 @app.route('/tawarano/')
 def meteo():

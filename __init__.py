@@ -34,7 +34,7 @@ def mongraphique():
 
 @app.route('/test')
 def hello_world():
-    return render_template('hello.html')
+    return render_template('test.html')
 
 if __name__ == "__main__":
   app.run(debug=True)

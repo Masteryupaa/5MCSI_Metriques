@@ -8,14 +8,26 @@
 
     <nav class="navbar">
         <ul>
-            <li><a href="https://mathisesiee-it.alwaysdata.net/">Accueil</a></li>
-            <li><a href="https://mathisesiee-it.alwaysdata.net/contact/">Liste de contacts</a></li>
-            <li><a href="https://mathisesiee-it.alwaysdata.net/rapport/">Rapport - Evolution des températures</a></li>
-            <li><a href="https://mathisesiee-it.alwaysdata.net/tawarano/">Export - Relévés météorologique Tawarano</a></li>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/contact/">Liste de contacts</a></li>
+            <li><a href="/rapport/">Rapport - Evolution des températures</a></li>
+            <li><a href="/tawarano/">Export - Relévés météorologique Tawarano</a></li>
         </ul>
       </nav>
 
-    <p>Contact 1</p>
-    <p>Contact 2</p>
+      <h2>Contacte moi</h2>
+
+      <form action="envoyer_message.php" method="post">
+          <label for="nom">Nom :</label><br>
+          <input type="text" id="nom" name="nom" required><br>
+      
+          <label for="prenom">Prénom :</label><br>
+          <input type="text" id="prenom" name="prenom" required><br>
+      
+          <label for="message">Message :</label><br>
+          <textarea id="message" name="message" rows="4" cols="50" required></textarea><br>
+      
+          <input type="submit" value="Envoyer">
+      </form>
   </body>
 </html>

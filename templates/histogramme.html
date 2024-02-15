@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Histogramme</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  </head>
+  <body>
+
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/contact/">Liste de contacts</a></li>
+            <li><a href="/rapport/">Rapport - Evolution des températures</a></li>
+            <li><a href="/tawarano/">Export - Relévés météorologique Tawarano</a></li>
+            <li><a href="/histogramme/">Histogramme en colonne</a></li>
+            <li><a href="/Avada Kedavra/">Page 40000004</a></li>
+        </ul>
+      </nav>
+
+      
+    <div id="chart_div"></div>
+    <script>
+      google.charts.load('current', { packages: ['corechart'] });
+      google.charts.setOnLoadCallback(drawBackgroundColor);
+
+      function drawBackgroundColor() {
+        function drawChart(data) {
+          // Convertir les données récupérées en un tableau utilisable par Google Charts
+          var dataTable = new google.visualization.DataTable();
+          dataTable.addColumn('string', 'Date');
+          dataTable.addColumn('number', 'Valeur');
+          data.results.forEach(entry => {
+            var date = new Date(entry.Jour * 1000);
+            dataTable.addRow([date.toLocaleDateString(), entry.temp]);
+          });
+
+          // Configurer les options du graphique à colonnes
+          var options = {
+            title: 'Évolution des températures de Paris pour les 16 prochains jours',
+            legend: { position: 'bottom' }
+          };
+
+          // Utiliser ColumnChart pour créer un graphique à colonnes
+          var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+          chart.draw(dataTable, options);
+        }
+
+        // Récupération de données depuis notre API /paris/
+        fetch('/tawarano/')
+          .then(response => response.json())
+          .then(data => {
+            drawChart(data);
+          })
+      }
+    </script>
+  </body>
+</html>

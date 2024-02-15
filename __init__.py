@@ -35,5 +35,9 @@ def mongraphique():
 def page_not_found(e):
     return render_template('404.html'), 404
 
+@app.route("/histogramme/")
+def histogramme():
+    return render_template("histogramme.html")
+
 if __name__ == "__main__":
   app.run(debug=True)

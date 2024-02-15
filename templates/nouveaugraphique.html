@@ -48,6 +48,6 @@ function drawTopX() {
         }
       };
 
-      var materialChart = new google.charts.Bar(document.getElementById('chart_div'));
-      materialChart.draw(data, options);
+      var chart = new google.charts.Bar(document.getElementById('chart_div'));
+      chart.draw(dataTable, options);
     }

@@ -21,14 +21,11 @@
 
 
     <script>
-      google.charts.load('current', {packages: ['corechart', 'bar']});
-      //google.charts.setOnLoadCallback(drawBackgroundColor);
-      google.charts.setOnLoadCallback(drawTopX);
+      google.charts.load('current', { packages: ['corechart'] });
+      google.charts.setOnLoadCallback(drawBackgroundColor);
      function drawBackgroundColor() {
-
-    function drawTopX(data) {
+    function drawChart(data) {
     // Convertir les données récupérées en un tableau utilisable par Google Charts
-
     var dataTable = new google.visualization.DataTable();
     dataTable.addColumn('string', 'Date');
     dataTable.addColumn('number', 'Valeur');
@@ -36,34 +33,15 @@
       var date = new Date(entry.Jour * 1000);
       dataTable.addRow([date.toLocaleDateString(), entry.temp]);
     });
-
     // Configurer les options du graphique en ligne
     var options = {
-      chart: {
-          title: 'Évolution des températures de Paris pour les 16 prochains jours',
-          subtitle: 'En degrée C°'
-        },
-        axes: {
-          x: {
-            0: {side: 'top'}
-          }
-        },
-        hAxis: {
-          title: 'Time of Day',
-          format: 'h:mm a',
-          viewWindow: {
-            min: [7, 30, 0],
-            max: [17, 30, 0]
-          }
-        },
-        vAxis: {
-          title: 'Rating (scale of 1-10)'
-        }
-      };
-    var chart = new google.charts.Bar(document.getElementById('chart_div'));
-      chart.draw(dataTable, options);
+      title: 'Évolution des températures de Paris pour les 16 prochains jours',
+      curveType: 'function',
+      legend: { position: 'bottom' }
+    };
+    var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+    chart.draw(dataTable, options);
   }
-
   // Récupération de données depuis notre API /paris/
   fetch('/tawarano/')
     .then(response => response.json())
